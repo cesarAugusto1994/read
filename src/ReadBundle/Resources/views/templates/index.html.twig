@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+            <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">Portfolio</h1>
+                            <p>Be Creative</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<div class="sidebar blog-sidebar">
+    <div class="sidebar-item  recent">
+        <h3>Seus Livros</h3>
+        {% for acervo in acervos %}
+        <div class="media">
+            <div class="pull-left">
+                <a href="{{ path('read_acervo_findone', {'id': acervo.id}) }}"><img style="width: 52px; height: 52px" src="{{ acervo.url }}" alt="aff"></a>
+            </div>
+            <div class="media-body">
+                <h4><a href="{{ path('read_acervo_findone', {'id': acervo.id}) }}">{{ acervo.titulo }}</a></h4>
+                <p>Cadatrado em {{ acervo.dataCadastro|date('d M Y') }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    <div class="portfolio-items">
+    {% for acervo in acervos %}
+        <div class="col-xs-6 col-sm-4 col-md-3 portfolio-item branded logos">
+            <div class="portfolio-wrapper">
+                <div class="portfolio-single">
+                    <div class="portfolio-thumb">
+                        <img src="{{ acervo.url }}" class="img-responsive" alt="">
+                    </div>
+                    <div class="portfolio-view">
+                        <ul class="nav nav-pills">
+                            <li><a href="{{ path('read_acervo_findone', {'id': acervo.id}) }}"><i class="fa fa-link"></i></a></li>
+                            <li><a href="{{ acervo.url }}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="portfolio-info ">
+                    <h2>{{ acervo.titulo }}</h2>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        </div>
+
+{% endblock %}

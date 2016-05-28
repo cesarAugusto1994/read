@@ -1,0 +1,47 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Autor{% endblock %}
+
+{% block body %}
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+            <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">Menu</h1>
+                            <a href="{{ path('read_autor_new') }}"><button class="btn btn-link">Cadastrar Novo</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="portfolio-items">
+        {% if 0 < acervos|length %}
+        {% for acervo in acervos %}
+            <div class="col-xs-6 col-sm-4 col-md-3 portfolio-item branded logos">
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-single">
+                        <div class="portfolio-thumb">
+                            <img src="{{ acervo.url }}" class="img-responsive" alt="">
+                        </div>
+                        <div class="portfolio-view">
+                            <ul class="nav nav-pills">
+                                <li><a href="{{ path('read_acervo_findone', {'id': acervo.id}) }}"><i class="fa fa-link"></i></a></li>
+                                <li><a href="{{ acervo.url }}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="portfolio-info ">
+                        <h2>{{ acervo.titulo }}</h2>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <h3>Nenhum titulo encontrado para esta autor.</h3>
+        {% endif %}
+    </div>
+{% endblock %}

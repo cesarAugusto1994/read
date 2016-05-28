@@ -1,0 +1,40 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Autor{% endblock %}
+
+{% block body %}
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+            <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">Menu</h1>
+                            <a href="{{ path('read_autor_new') }}"><button class="btn btn-link">Cadastrar Novo</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <table class="table table-hover table-condensed">
+        <caption>Autores</caption>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in itens %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.nome }}</td>
+                <td><a href="{{ path('read_autor_findacervosbyautor', {'id': item.id}) }}">Detalhes</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
